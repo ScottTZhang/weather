@@ -1,0 +1,19 @@
+{
+  "name": "weather",
+  "version": "0.0.0",
+  "description": "weather api demo",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ScottTZhang/weather.git"
+  },
+  "author": "Ting Zhang",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ScottTZhang/weather/issues"
+  },
+  "dependencies": {
+    "express": "~4.10.1",
+    "request": "~2.49.0"
+  }
+}
