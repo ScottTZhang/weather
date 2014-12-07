@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="/js/underscore-1.7.0.min.js" type="text/javascript"></script>
+<script src="/js/backbone-1.1.2.min.js" type="text/javascript"></script>
+<script src="/js/weather.js" type="text/javascript"></script>
+
+<script type="text/template" id="result_tmp">
+    </br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= city %>, <%= state %></div>
+      <div class="panel-body">
+        <% for(var i = 1; i <= 3; i++) { %>
+          <div class="col-sm-4 day">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <p class="major center"><%=forecast.simpleforecast.forecastday[i].date.month%>/<%= forecast.simpleforecast.forecastday[i].date.day %></p>
+                <p class="major center"><img src="<%= forecast.simpleforecast.forecastday[i].icon_url %>"></p>
+                <p class="major center"><%= forecast.simpleforecast.forecastday[i].conditions %></p>
+                <p class="major center"><%= forecast.simpleforecast.forecastday[i].low.fahrenheit %> ~ <%= forecast.simpleforecast.forecastday[i].high.fahrenheit %> &#176;F</p>
+                <p class="center">Humidity: <%=forecast.simpleforecast.forecastday[i].avehumidity %>%</p>
+                <p class="center">Wind: <%=forecast.simpleforecast.forecastday[i].maxwind.mph %> mph</p>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+</script>
+
+<script type="text/template" id="loading">
+  <p class="center"><img src="/img/loader.gif" class="img-thumb"><p>
+</script>
+
+<script type="text/template" id="result_err">
+  <p class="center"><%= responseText %><p>
+</script>
+
+<title>Weather</title>
+</head>
+<body>
+
+<div class="container">
+  </br>
+  <div class="row">
+
+    <div class="input-group">
+      <input type="text" class="form-control" id="zip" placeholder="Enter a 5 digts zipcode.">
+      <span class="input-group-btn">
+        <button class="btn btn-default submit" type="button">Submit</button>
+      </span>
+    </div>
+
+    <div id="result">
+    </div>
+  </div>
+</div>
+</body>
+</html>
