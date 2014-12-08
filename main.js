@@ -43,7 +43,8 @@ app.get('/api/gendata', function(req, res) {
 });
 
 
-var server = app.listen(4000, function() {
+var port = process.env.PORT || 4000;
+var server = app.listen(port , function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Now listening at: ' + host + ':' + port);
