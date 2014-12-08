@@ -11,6 +11,10 @@ app.use('/', express.static(path.join(__dirname, 'public'))); //can use files in
 
 app.get('/api/gendata', function(req, res) {
   var zip = req.query.zip;
+  var regex = new RegExp("^\\d{5}(-\\d{4})?$");
+  if (!zip.match(regex)) {
+    return res.status(400).send('Invalid zip code. Please enter again.');
+  }
   var zipUrl = API_PATH + API_KEY + '/geolookup/q/' + zip + '.json';
   request(zipUrl, function (zipError, zipResponse, body) {
     var zipBody = JSON.parse(body);
