@@ -1,0 +1,20 @@
+</br>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= city %>, <%= state %></div>
+  <div class="panel-body">
+    <% for(var i = 1; i <= 3; i++) { %>
+    <div class="col-sm-4 day">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="major center"><%=forecast.simpleforecast.forecastday[i].date.month%>/<%= forecast.simpleforecast.forecastday[i].date.day %></p>
+          <p class="major center"><img src="<%= forecast.simpleforecast.forecastday[i].icon_url %>"></p>
+          <p class="major center"><%= forecast.simpleforecast.forecastday[i].conditions %></p>
+          <p class="major center"><%= forecast.simpleforecast.forecastday[i].low.fahrenheit %> ~ <%= forecast.simpleforecast.forecastday[i].high.fahrenheit %> &#176;F</p>
+          <p class="center">Humidity: <%=forecast.simpleforecast.forecastday[i].avehumidity %>%</p>
+          <p class="center">Wind: <%=forecast.simpleforecast.forecastday[i].maxwind.mph %> mph</p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
