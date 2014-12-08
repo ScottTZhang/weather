@@ -3,7 +3,12 @@ window.app.views.WeatherView = Backbone.View.extend({
   url: '/api/gendata',
 
   events: {
-    "click .submit": "renderResult"
+    "click .submit": "renderResult",
+    "keypress #zip": function(e){
+      if (e.which === 13) {
+        this.renderResult();
+      }
+    }
   },
 
   renderResult: function(){
